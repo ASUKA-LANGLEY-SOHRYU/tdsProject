@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy_Fighting : MonoBehaviour
@@ -24,12 +25,27 @@ public class Enemy_Fighting : MonoBehaviour
     void FixedUpdate()
     {
         var distance = Vector2.Distance(transform.position, player.position);
-        if (distance <= lookingDistance)
-        {
+        var rayHits = Physics2D.LinecastAll(transform.position, player.position);
+        Debug.DrawLine(transform.position, player.position, Color.red);
+        Debug.Log(rayHits.All(x => !x.collider.CompareTag("Wall")));
+        foreach (var k in rayHits)
+            Debug.Log(k.collider.tag);
+        if (distance <= lookingDistance && !IsWallInTheWay(rayHits))
+        { 
             var direction = player.GetComponent<Rigidbody2D>().position - rb.position;
             rb.MovePosition(rb.position + direction.normalized * Time.fixedDeltaTime * speed);
             RotateTowardsTarget();
         }
+    }
+
+    bool IsWallInTheWay(RaycastHit2D[] rayHits)
+    {
+        foreach(var hit in rayHits)
+            if (hit.collider.CompareTag("Player"))
+                return false;
+            else if (hit.collider.CompareTag("Wall"))
+                return true;
+        return false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

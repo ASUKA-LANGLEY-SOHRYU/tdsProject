@@ -29,7 +29,8 @@ public class Enemy_Shooting : MonoBehaviour
     {
         var dist = Vector2.Distance(transform.position, player.position);
         var direction = player.GetComponent<Rigidbody2D>().position - rb.position;
-        if (dist <= lookingDistance)
+        var rayHits = Physics2D.LinecastAll(transform.position, player.position);
+        if (dist <= lookingDistance && !IsWallInTheWay(rayHits))
         {
             rb.MovePosition(rb.position + direction.normalized * speed * Time.deltaTime);
             RotateTowardsTarget();
@@ -43,7 +44,17 @@ public class Enemy_Shooting : MonoBehaviour
                 timeBtwShots -= Time.deltaTime;
         }
     }
-    
+
+    bool IsWallInTheWay(RaycastHit2D[] rayHits)
+    {
+        foreach (var hit in rayHits)
+            if (hit.collider.CompareTag("Player"))
+                return false;
+            else if (hit.collider.CompareTag("Wall"))
+                return true;
+        return false;
+    }
+
     void Shoot()
     {
         var bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
