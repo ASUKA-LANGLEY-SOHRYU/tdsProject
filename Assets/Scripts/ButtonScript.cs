@@ -6,6 +6,7 @@ public class ButtonScript : MonoBehaviour
 {
     public GameObject door;
     public Sprite pressedButton;
+    public GameObject buttonInfo;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

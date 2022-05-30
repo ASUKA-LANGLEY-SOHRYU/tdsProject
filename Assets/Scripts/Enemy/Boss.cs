@@ -18,9 +18,7 @@ public class Boss : MonoBehaviour
             var rand = Random.Range(4, 10);
             yield return new WaitForSeconds(rand);
             for(var i = 0; i < 5; i++)
-            {
                 Instantiate(bullet, transform.position, Quaternion.identity);
-            }
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy_Shooting : MonoBehaviour
@@ -47,12 +48,7 @@ public class Enemy_Shooting : MonoBehaviour
 
     bool IsWallInTheWay(RaycastHit2D[] rayHits)
     {
-        foreach (var hit in rayHits)
-            if (hit.collider.CompareTag("Player"))
-                return false;
-            else if (hit.collider.CompareTag("Wall"))
-                return true;
-        return false;
+        return rayHits.Any(x => x.collider.CompareTag("Wall"));
     }
 
     void Shoot()

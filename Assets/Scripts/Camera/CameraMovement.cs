@@ -9,12 +9,12 @@ public class CameraMovement : MonoBehaviour
     public float dampTime = 0.4f;
     private Vector3 cameraPos;
     private Vector3 velocity = Vector3.zero;
+
     void Start()
     {
         player = DataManager.player;
     }
 
-    // Update is called once per frame
     void Update()
     {
         cameraPos = new Vector3(player.position.x, player.position.y, transform.position.z);

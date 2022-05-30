@@ -40,12 +40,7 @@ public class Enemy_Fighting : MonoBehaviour
 
     bool IsWallInTheWay(RaycastHit2D[] rayHits)
     {
-        foreach(var hit in rayHits)
-            if (hit.collider.CompareTag("Player"))
-                return false;
-            else if (hit.collider.CompareTag("Wall"))
-                return true;
-        return false;
+        return rayHits.Any(x => x.collider.CompareTag("Wall"));
     }
 
     void OnCollisionEnter2D(Collision2D collision)

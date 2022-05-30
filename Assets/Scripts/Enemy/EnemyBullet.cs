@@ -11,9 +11,9 @@ public class EnemyBullet : MonoBehaviour
     {
         var effect =Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1f);
-        PlayerHealth ph = collision.gameObject.GetComponent<PlayerHealth>();
-        if (ph)
-            ph.TakeDamage(damage);
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth)
+            playerHealth.TakeDamage(damage);
         Destroy(gameObject);
     }
 }
