@@ -14,7 +14,6 @@ public class Enemy_Fighting : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private bool isCollidesPlayer = false;
-
     void Start()
     {
         player = DataManager.player;

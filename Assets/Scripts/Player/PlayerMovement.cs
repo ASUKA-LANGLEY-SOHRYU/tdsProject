@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public FatigueScript fatigueScript;
     private bool canRun = true;
 
+    public AudioSource walkingSound;
+    public AudioSource runningSound;
+
     private Vector2 movement;
     private Vector2 mousePos;
 
@@ -29,6 +32,28 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+        if (movement == Vector2.zero)
+        {
+            if (walkingSound.isPlaying)
+                walkingSound.Stop();
+            if (runningSound.isPlaying)
+                runningSound.Stop();
+        }
+        else if (isSprint)
+        {
+            if (!runningSound.isPlaying)
+                runningSound.Play();
+            if (walkingSound.isPlaying)
+                walkingSound.Stop();
+        }
+        else
+        {
+            if (runningSound.isPlaying)
+                runningSound.Stop();
+            if (!walkingSound.isPlaying)
+                walkingSound.Play();
+        }
+
         mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
     }
 

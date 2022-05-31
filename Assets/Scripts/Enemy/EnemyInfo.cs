@@ -24,8 +24,8 @@ public class EnemyInfo : MonoBehaviour
         canvas = camera.gameObject.GetComponentInChildren<Canvas>().gameObject;
         screens["Worm"] = wormScreen;
         screens["Trojan"] = trojanScreen;
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-            screen = Instantiate(startScreen, new Vector3(camera.position.x, camera.position.y), Quaternion.identity, camera);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            screen = InstantiateScreen(startScreen);
     }
 
     private void Update()
@@ -44,8 +44,14 @@ public class EnemyInfo : MonoBehaviour
         {
             if (screen != null)
                 Destroy(screen);
-            screen = Instantiate(screens[enemy.tag], new Vector3(camera.position.x, camera.position.y), Quaternion.identity, camera);
+            screen = InstantiateScreen(screens[enemy.tag]);
             DataManager.enemyTags.Add(enemy.tag);
         }
     }
+
+    private GameObject InstantiateScreen(GameObject screen)
+    {
+        return Instantiate(screen, new Vector3(camera.position.x, camera.position.y), Quaternion.identity, camera.GetChild(0));
+    }
+
 }

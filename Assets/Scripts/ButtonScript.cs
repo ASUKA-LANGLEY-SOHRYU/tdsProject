@@ -8,6 +8,8 @@ public class ButtonScript : MonoBehaviour
     public Sprite pressedButton;
     public GameObject buttonInfo;
 
+    public AudioSource buttonSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
@@ -15,6 +17,7 @@ public class ButtonScript : MonoBehaviour
         var sr = gameObject.GetComponent<SpriteRenderer>();
         sr.sprite = pressedButton;
         sr.color = new Color(0.01f, 1f, 1f);
+        buttonSound.Play();
         Destroy(door);
     }
 }

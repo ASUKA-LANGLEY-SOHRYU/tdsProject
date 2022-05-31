@@ -13,7 +13,10 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject cam;
 
-    public GameObject healthBar;
+    public GameObject UI;
+
+    public AudioSource damageSound;
+    public GameObject enemies;
 
     public void TakeDamage(int damage)
     {
@@ -22,11 +25,15 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
             Die();
         DataManager.playerHealth = health;
+        damageSound.pitch = Random.Range(0.3f, 1.5f);
+        damageSound.Play();
     }
 
     void Die()
     {
-        healthBar.SetActive(false);
+        UI.SetActive(false);
+        gameObject.SetActive(false);
+        enemies.SetActive(false);
         Instantiate(deathScreen, new Vector3(cam.transform.position.x, cam.transform.position.y), Quaternion.identity);
         gameObject.GetComponent<PlayerMovement>().speed = 0f;
         Destroy(cam.GetComponent<CameraMovement>());
