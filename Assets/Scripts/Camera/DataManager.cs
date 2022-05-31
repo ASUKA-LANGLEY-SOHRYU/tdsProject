@@ -7,4 +7,8 @@ using UnityEngine;
 class DataManager
 {
     public static Transform player;
+
+    public static List<string> enemyTags = new List<string>();
+
+    public static int playerHealth = 0;
 }

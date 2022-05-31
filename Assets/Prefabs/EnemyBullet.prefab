@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8873047607171639434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 2987581074526766243, guid: 52caf1fb0b0169d4fb33b251bb9bab4a, type: 3}
-  damage: 10
+  damage: 42

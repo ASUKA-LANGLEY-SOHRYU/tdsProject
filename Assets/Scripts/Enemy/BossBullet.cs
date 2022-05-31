@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BossBullet : MonoBehaviour
@@ -9,6 +10,8 @@ public class BossBullet : MonoBehaviour
     public int damadge = 6;
 
     public GameObject hitEffect;
+
+    private readonly string[] ignoreList = new string[] { "Boss", "BossBullet" , "InfoManager" };
 
     void Start()
     {
@@ -37,10 +40,10 @@ public class BossBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("BossBullet"))
+        if (ignoreList.Any(x => collision.CompareTag(x)))
             return;
         if (collision.gameObject.CompareTag("Player"))
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damadge);
+            player.GetComponent<PlayerHealth>().TakeDamage(damadge);
         if (hitEffect != null)
             Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);

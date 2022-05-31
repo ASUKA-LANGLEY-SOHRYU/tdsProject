@@ -15,7 +15,6 @@ public class InfoManager : MonoBehaviour
     {
         triggerHandler["info_door"] = "Должно быть от эти ворота открываются кнопкой";
         triggerHandler["info_button"] = "Эта кнопка, которая открывает ворота";
-        //StartCoroutine(ClearTextAfterSeconds(5));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

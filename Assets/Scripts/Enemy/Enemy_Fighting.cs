@@ -14,6 +14,7 @@ public class Enemy_Fighting : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private bool isCollidesPlayer = false;
+
     void Start()
     {
         player = DataManager.player;
@@ -21,15 +22,10 @@ public class Enemy_Fighting : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         var distance = Vector2.Distance(transform.position, player.position);
         var rayHits = Physics2D.LinecastAll(transform.position, player.position);
-        Debug.DrawLine(transform.position, player.position, Color.red);
-        Debug.Log(rayHits.All(x => !x.collider.CompareTag("Wall")));
-        foreach (var k in rayHits)
-            Debug.Log(k.collider.tag);
         if (distance <= lookingDistance && !IsWallInTheWay(rayHits))
         { 
             var direction = player.GetComponent<Rigidbody2D>().position - rb.position;

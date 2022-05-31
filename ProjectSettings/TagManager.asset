@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - BossBullet
   - Wall
+  - Bullet
+  - InfoManager
   layers:
   - Default
   - TransparentFX

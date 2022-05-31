@@ -335,14 +335,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaf2782c10cdfd4aa3ac913908a106b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   stoppingDistance: 7
   retreatDistance: 4
   lookingDistance: 50
   firePoint: {fileID: 5839944393680300486}
   startTimeBtwShots: 2
   bulletPrefab: {fileID: 8873047607171639434, guid: dcf469fe0f8aeb546956dab3345c7bdf, type: 3}
-  bulletForce: 100
+  bulletForce: 42
 --- !u!114 &4848421399132863226
 MonoBehaviour:
   m_ObjectHideFlags: 0

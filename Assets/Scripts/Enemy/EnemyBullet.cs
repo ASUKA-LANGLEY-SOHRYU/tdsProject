@@ -9,8 +9,9 @@ public class EnemyBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        var effect =Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 1f);
+        if (collision.gameObject.CompareTag("Worm"))
+            return;
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
         PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
         if (playerHealth)
             playerHealth.TakeDamage(damage);

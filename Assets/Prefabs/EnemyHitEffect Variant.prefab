@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 879162725822577400, guid: 7ef71de21f2934c469ab8059441a03b3, type: 3}
       propertyPath: m_Name
-      value: EnemyHitEffect
+      value: EnemyHitEffect Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4185139649435910616, guid: 7ef71de21f2934c469ab8059441a03b3, type: 3}
       propertyPath: m_RootOrder
@@ -61,3 +61,20 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c3ad7a3235b5d89429302cdbab6fc6e1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef71de21f2934c469ab8059441a03b3, type: 3}
+--- !u!1 &2987581074526766243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 879162725822577400, guid: 7ef71de21f2934c469ab8059441a03b3, type: 3}
+  m_PrefabInstance: {fileID: 2685672598904389211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3490934506194586761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987581074526766243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ff0079763c6734cabfe6a309bdd59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
